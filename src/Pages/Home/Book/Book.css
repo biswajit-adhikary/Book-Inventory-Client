@@ -1,0 +1,36 @@
+.single-book {
+    box-shadow: 0 2px 14px rgb(38 60 85 / 16%);
+    margin-bottom: 30px;
+}
+
+.book-image {
+    position: relative;
+}
+
+.book-image img {
+    width: 100%;
+}
+
+.book-image span {
+    background-color: #FF5B5C;
+    box-shadow: -3px 3px 20px 0px #ff5b5c9e;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 25px;
+    padding: 5px 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.book-text {
+    padding: 15px;
+}
+
+.book-text h3 {
+    font-size: 22px;
+}
+
+.book-mata p {
+    font-weight: bold;
+}

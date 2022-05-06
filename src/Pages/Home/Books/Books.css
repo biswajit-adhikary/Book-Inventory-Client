@@ -1,0 +1,10 @@
+.books-area {
+    padding-top: 65px;
+    padding-bottom: 35px;
+}
+
+.theme-text-secondary {
+    font-size: 32px;
+    text-transform: capitalize;
+    letter-spacing: .5px;
+}
