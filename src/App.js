@@ -8,6 +8,7 @@ import Register from './Pages/LoginSystem/Register/Register';
 import ForgotPassword from './Pages/LoginSystem/ForgotPassword/ForgotPassword';
 import Footer from './Pages/Shared/Footer/Footer';
 import BookDetails from './Pages/BookDetails/BookDetails';
+import RequireAuth from './Pages/LoginSystem/RequireAuth/RequireAuth';
 
 function App() {
   return (
@@ -16,7 +17,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path='/book/:bookId' element={
-          <BookDetails />
+          <RequireAuth>
+            <BookDetails />
+          </RequireAuth>
         }></Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
