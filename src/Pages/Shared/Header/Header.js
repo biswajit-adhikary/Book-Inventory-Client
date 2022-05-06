@@ -1,9 +1,16 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, NavLink } from 'react-router-dom';
+import auth from '../../../Firebase/Firebase.init';
 import './Header.css'
 
 const Header = () => {
+    const [user] = useAuthState(auth);
+    const handleSignOut = () => {
+        signOut(auth);
+    }
     return (
         <>
             <Navbar bg="light" expand="lg" sticky="top" className='py-3'>
@@ -17,15 +24,15 @@ const Header = () => {
                             <NavLink
                                 className={({ isActive }) => isActive ? "nav-link active-link" : "nav-link"} to="/">Home
                             </NavLink>
-                            <NavLink
-                                className={({ isActive }) => isActive ? "nav-link active-link" : "nav-link"} to="/login">Login
-                            </NavLink>
-                            <NavLink
-                                className={({ isActive }) => isActive ? "nav-link active-link" : "nav-link"} to="/register">Register
-                            </NavLink>
-                            <NavLink
-                                className={({ isActive }) => isActive ? "nav-link active-link" : "nav-link"} to="/forgot-password">Forgot Password
-                            </NavLink>
+                            {
+                                user
+                                    ?
+                                    <Button onClick={handleSignOut} className="btn theme-btn-two">Sign Out</Button>
+                                    :
+                                    <NavLink
+                                        className="btn theme-btn" to="/login">Login
+                                    </NavLink>
+                            }
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
