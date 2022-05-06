@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCfW097XkQV-rGkyKwY512YuH6u4E79k0Y",
-    authDomain: "book-inventory-dbbc9.firebaseapp.com",
-    projectId: "book-inventory-dbbc9",
-    storageBucket: "book-inventory-dbbc9.appspot.com",
-    messagingSenderId: "640764492709",
-    appId: "1:640764492709:web:11cab2d0e8205669ec464c"
+    apiKey: process.env.REACT_APP_apiKey,
+    authDomain: process.env.REACT_APP_authDomain,
+    projectId: process.env.REACT_APP_projectId,
+    storageBucket: process.env.REACT_APP_storageBucket,
+    messagingSenderId: process.env.REACT_APP_messagingSenderId,
+    appId: process.env.REACT_APP_appId
 };
 
 const app = initializeApp(firebaseConfig);
