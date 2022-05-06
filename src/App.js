@@ -10,6 +10,8 @@ import Footer from './Pages/Shared/Footer/Footer';
 import BookDetails from './Pages/BookDetails/BookDetails';
 import RequireAuth from './Pages/LoginSystem/RequireAuth/RequireAuth';
 import NotFound from './Pages/NotFound/NotFound';
+import Inventories from './Pages/Inventories/Inventories';
+import AddNewItem from './Pages/AddNewItem/AddNewItem';
 
 function App() {
   return (
@@ -17,11 +19,13 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path='/book/:bookId' element={
+        <Route path='/inventory/:bookId' element={
           <RequireAuth>
             <BookDetails />
           </RequireAuth>
         }></Route>
+        <Route path="/manage-inventories" element={<Inventories />} />
+        <Route path="/add-new-item" element={<AddNewItem />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />

@@ -7,7 +7,7 @@ const Book = ({ book }) => {
     const { _id, name, image, description, price, quantity, supplier } = book;
     const navigate = useNavigate();
     const navigateToBookDetail = id => {
-        navigate(`/book/${id}`);
+        navigate(`/inventory/${id}`);
     }
     return (
         <Col lg={4}>

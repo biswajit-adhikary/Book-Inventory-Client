@@ -12,15 +12,16 @@
 }
 
 .book-image span {
-    background-color: #FF5B5C;
+    background-color: #fff;
     box-shadow: -3px 3px 20px 0px #ff5b5c9e;
-    color: #fff;
+    color: #FF5B5C;
     font-size: 12px;
     border-radius: 25px;
     padding: 5px 10px;
     position: absolute;
-    top: 10px;
-    left: 10px;
+    bottom: 15px;
+    left: 15px;
+    font-weight: bold;
 }
 
 .book-text {
