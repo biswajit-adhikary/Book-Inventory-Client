@@ -5,7 +5,7 @@ import { Container } from 'react-bootstrap';
 
 const Banner = () => {
     return (
-        <section className='banner-area d-flex justify-content-center align-items-center' style={{ backgroundImage: `url(${banner})` }}>
+        <div className='banner-area d-flex justify-content-center align-items-center' style={{ backgroundImage: `url(${banner})` }}>
             <Container>
                 <div className="banner-text">
                     <h3 className='theme-text-primary text-white'>Book inventory</h3>
@@ -13,7 +13,7 @@ const Banner = () => {
                     <button className='btn theme-btn'>Manage Inventory</button>
                 </div>
             </Container>
-        </section >
+        </div >
     );
 };
 

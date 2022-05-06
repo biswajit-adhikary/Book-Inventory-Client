@@ -1,5 +1,5 @@
 .banner-area {
-    height: 600px;
+    height: 550px;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -64,7 +64,7 @@
 
 @media only screen and (max-width: 991px) {
     .banner-area {
-        height: 500px;
+        height: 450px;
     }
 
     .theme-text-primary {
