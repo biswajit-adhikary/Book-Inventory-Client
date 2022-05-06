@@ -7,6 +7,7 @@ import google from '../../../images/google.png';
 import Loading from '../../Shared/Loading/Loading';
 
 const GoogleLogin = () => {
+    // Main hook(Google Login)
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
 
     // Important Variable
@@ -23,7 +24,6 @@ const GoogleLogin = () => {
     // Error Message
     if (googleError) {
         errorMessage = <p className='text-danger'>Error: {googleError?.message}</p>
-        return errorMessage;
     }
 
     // Successfully login
@@ -36,6 +36,7 @@ const GoogleLogin = () => {
             <Button onClick={() => signInWithGoogle()} className='btn theme-btn w-100' type="submit">
                 <img src={google} alt="" /> Continue With Google
             </Button>
+            {errorMessage}
         </div>
     );
 };

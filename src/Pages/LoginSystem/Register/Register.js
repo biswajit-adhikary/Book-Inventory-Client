@@ -1,9 +1,52 @@
 import React from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../../Firebase/Firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 import GoogleLogin from '../GoogleLogin/GoogleLogin';
 
 const Register = () => {
+    // Main hook(Registration) and send email verification
+    const [
+        createUserWithEmailAndPassword,
+        emailUser,
+        emailLoading,
+        emailError,
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
+    // Profile update
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+    // Registration function
+    const handleEmailRegister = async (event) => {
+        event.preventDefault();
+        const name = event.target.name.value;
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name });
+    }
+
+    // Important Variable
+    let errorMessage;
+    const navigate = useNavigate();
+
+    // After Registration
+    if (emailUser) {
+        navigate('/login');
+    }
+
+    // Loading & Updating
+    if (emailLoading || updating) {
+        return <Loading></Loading>;
+    }
+
+    // Error Message
+    if (emailError || updateError) {
+        errorMessage = <p className='text-danger'>Error: {emailError?.message}</p>;
+    }
+
     return (
         <div className='form-area login-area text-center d-flex justify-content-center align-items-center'>
             <Container>
@@ -14,7 +57,7 @@ const Register = () => {
                                 <h3 className='theme-text-primary text-center '>Register</h3>
                                 <h4 className='theme-sub-text mt-3'>Please Register to continue using our website.</h4>
                             </div>
-                            <form action="">
+                            <form onSubmit={handleEmailRegister}>
                                 <Form.Control name="name" type="text" placeholder="Full Name" className='mb-3' required />
                                 <Form.Control name="email" type="email" placeholder="Email Address" className='mb-3' required />
                                 <Form.Control name="password" type="password" placeholder="Password" className='mb-3' required />
@@ -24,6 +67,7 @@ const Register = () => {
                                 <Button className='btn theme-btn w-100' type="submit">
                                     Register
                                 </Button>
+                                {errorMessage}
                                 <div className="separator">
                                     <div></div>
                                     <span>Or</span>

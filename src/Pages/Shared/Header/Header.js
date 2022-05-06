@@ -30,7 +30,7 @@ const Header = () => {
                                     <Button onClick={handleSignOut} className="btn theme-btn-two">Sign Out</Button>
                                     :
                                     <NavLink
-                                        className="btn theme-btn" to="/login">Login
+                                        className="btn theme-btn" to="/login">Log in
                                     </NavLink>
                             }
                         </Nav>
