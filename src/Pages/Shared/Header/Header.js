@@ -5,8 +5,8 @@ import './Header.css'
 
 const Header = () => {
     return (
-        <div className='header py-2'>
-            <Navbar bg="light" expand="lg">
+        <>
+            <Navbar bg="light" expand="lg" sticky="top" className='py-3'>
                 <Container>
                     <Navbar.Brand as={Link} to="/">
                         Book Inventory
@@ -30,7 +30,7 @@ const Header = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-        </div>
+        </>
     );
 };
 
