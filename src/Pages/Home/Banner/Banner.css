@@ -37,6 +37,7 @@
     letter-spacing: .5px;
     padding: 9px 20px;
     transition: .3s;
+    border: none;
 }
 
 .theme-btn:hover {
@@ -52,6 +53,7 @@
     letter-spacing: .5px;
     padding: 9px 20px;
     transition: .3s;
+    border: none;
 }
 
 .theme-btn-two:hover {
