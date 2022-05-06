@@ -45,7 +45,22 @@
     color: #fff;
 }
 
-@media only screen and (max-width: 600px) {
+.theme-btn-two {
+    background-color: #FF5B5C;
+    box-shadow: -3px 3px 20px 0px #ff5b5c9e;
+    color: #fff;
+    letter-spacing: .5px;
+    padding: 9px 20px;
+    transition: .3s;
+}
+
+.theme-btn-two:hover {
+    background-color: #5A8DEE;
+    box-shadow: -3px 3px 20px 0px #598dee9c;
+    color: #fff;
+}
+
+@media only screen and (max-width: 991px) {
     .banner-area {
         height: 500px;
     }

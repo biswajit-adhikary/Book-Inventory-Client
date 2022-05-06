@@ -1,14 +1,23 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import './Footer.css';
 
 const Footer = () => {
     return (
-        <footer className='footer py-3 text-center'>
+        <footer className='footer py-3 text-white'>
             <Container>
-                <p className='text-white text-center mb-0'>
-                    &copy; 2022 Book Inventory, All Rights Reserved.
-                </p>
+                <Row>
+                    <Col lg={6}>
+                        <p className='mb-0 copyright-text'>
+                            &copy; 2022 Book Inventory, All Rights Reserved.
+                        </p>
+                    </Col>
+                    <Col lg={6}>
+                        <p className='mb-0 developer-text'>
+                            Developed by: Biswajit Adhikary.
+                        </p>
+                    </Col>
+                </Row>
             </Container>
         </footer>
     );
