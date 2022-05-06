@@ -1,10 +1,11 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
+import './Header.css'
 
 const Header = () => {
     return (
-        <div className='header'>
+        <div className='header py-1'>
             <Navbar bg="light" expand="lg">
                 <Container>
                     <Navbar.Brand as={Link} to="/">
