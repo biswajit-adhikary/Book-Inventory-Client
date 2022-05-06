@@ -1,3 +1,7 @@
+.navbar {
+    border-bottom: 1px solid #ededed;
+}
+
 a.navbar-brand {
     font-weight: bold !important;
     color: #333 !important;

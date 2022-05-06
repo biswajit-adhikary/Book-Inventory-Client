@@ -1,5 +1,6 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
+import logo from "../../../images/logo.png";
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, NavLink } from 'react-router-dom';
@@ -16,7 +17,7 @@ const Header = () => {
             <Navbar bg="light" expand="lg" sticky="top" className='py-3'>
                 <Container>
                     <Navbar.Brand as={Link} to="/">
-                        Book Inventory
+                        <img src={logo} alt="" />
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">

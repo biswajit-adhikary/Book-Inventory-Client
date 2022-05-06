@@ -9,6 +9,7 @@ import ForgotPassword from './Pages/LoginSystem/ForgotPassword/ForgotPassword';
 import Footer from './Pages/Shared/Footer/Footer';
 import BookDetails from './Pages/BookDetails/BookDetails';
 import RequireAuth from './Pages/LoginSystem/RequireAuth/RequireAuth';
+import NotFound from './Pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </>
