@@ -12,6 +12,8 @@ import RequireAuth from './Pages/LoginSystem/RequireAuth/RequireAuth';
 import NotFound from './Pages/NotFound/NotFound';
 import Inventories from './Pages/Inventories/Inventories';
 import AddNewItem from './Pages/AddNewItem/AddNewItem';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -25,12 +27,17 @@ function App() {
           </RequireAuth>
         }></Route>
         <Route path="/manage-inventories" element={<Inventories />} />
-        <Route path="/add-new-item" element={<AddNewItem />} />
+        <Route path="/add-new-item" element={
+          <RequireAuth>
+            <AddNewItem />
+          </RequireAuth>
+        } />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <ToastContainer />
       <Footer />
     </>
   );

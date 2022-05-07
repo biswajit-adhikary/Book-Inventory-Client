@@ -1,0 +1,22 @@
+.add-new-item-area {
+    padding: 65px 0;
+    min-height: 87vh;
+}
+
+.add-item-form {
+    border: 1px solid #ededed;
+    border-radius: 6px;
+    box-shadow: 0 2px 14px rgb(38 60 85 / 16%);
+    padding: 40px;
+}
+
+.add-item-form span {
+    font-size: 13px;
+    color: #999;
+}
+
+@media only screen and (max-width: 499px) {
+    .add-item-form {
+        padding: 40px 15px;
+    }
+}
