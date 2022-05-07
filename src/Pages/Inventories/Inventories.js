@@ -7,10 +7,10 @@ import './Inventories.css';
 const Inventories = () => {
     const [inventories, setInventories] = useState([]);
     useEffect(() => {
-        fetch('books.json')
+        fetch('http://localhost:5000/book')
             .then(res => res.json())
             .then(data => setInventories(data));
-    })
+    }, [])
     return (
         <div className='inventories-area'>
             <Container>
