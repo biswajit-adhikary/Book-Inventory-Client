@@ -1,8 +1,25 @@
 import React from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
+import auth from '../../../Firebase/Firebase.init';
+import { toast } from 'react-toastify';
 
 const ForgotPassword = () => {
+    const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
+
+    const resetPassword = async event => {
+        event.preventDefault();
+        const email = event.target.email.value;
+        if (email) {
+            await sendPasswordResetEmail(email);
+            event.target.reset();
+            toast('Email Send!');
+        }
+        else {
+            toast('Please enter email address!');
+        }
+    }
     return (
         <div className='form-area login-area text-center d-flex justify-content-center align-items-center'>
             <Container>
@@ -13,7 +30,7 @@ const ForgotPassword = () => {
                                 <h3 className='theme-text-primary text-center '>Forgot Password?</h3>
                                 <h4 className='theme-sub-text mt-3'>Please put your email address and click submit.</h4>
                             </div>
-                            <form action="">
+                            <form onSubmit={resetPassword}>
                                 <Form.Control name="email" type="email" placeholder="Email Address" className='mb-3' required />
                                 <div className="form-mata d-flex justify-content-between">
                                     <p>Back to login: <Link to="/login">Login</Link></p>
