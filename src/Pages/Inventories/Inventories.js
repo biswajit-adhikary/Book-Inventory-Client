@@ -1,16 +1,11 @@
-import React, { useEffect, useState } from 'react';
 import { Container, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useBooks from '../../hooks/useBooks';
 import Inventory from '../Inventory/Inventory';
 import './Inventories.css';
 
 const Inventories = () => {
-    const [inventories, setInventories] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:5000/book')
-            .then(res => res.json())
-            .then(data => setInventories(data));
-    }, [])
+    const [books] = useBooks([]);
     return (
         <div className='inventories-area'>
             <Container>
@@ -29,9 +24,9 @@ const Inventories = () => {
                         </thead>
                         <tbody>
                             {
-                                inventories.map(inventory => <Inventory
-                                    key={inventory._id}
-                                    inventory={inventory}
+                                books.map(book => <Inventory
+                                    key={book._id}
+                                    book={book}
                                 ></Inventory>)
                             }
                         </tbody>

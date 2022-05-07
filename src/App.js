@@ -26,7 +26,11 @@ function App() {
             <BookDetails />
           </RequireAuth>
         }></Route>
-        <Route path="/manage-inventories" element={<Inventories />} />
+        <Route path="/manage-inventories" element={
+          <RequireAuth>
+            <Inventories />
+          </RequireAuth>
+        } />
         <Route path="/add-new-item" element={
           <RequireAuth>
             <AddNewItem />

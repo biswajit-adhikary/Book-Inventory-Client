@@ -1,16 +1,11 @@
-import React, { useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useBooks from '../../../hooks/useBooks';
 import Book from '../Book/Book';
 import './Books.css';
 
 const Books = () => {
-    const [books, setBooks] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:5000/book')
-            .then(res => res.json())
-            .then(data => setBooks(data));
-    }, [])
+    const [books] = useBooks([]);
     return (
         <div className='books-area'>
             <Container>
