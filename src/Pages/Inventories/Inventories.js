@@ -1,11 +1,28 @@
-import { Container, Table } from 'react-bootstrap';
+import { Button, Container, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import useBooks from '../../hooks/useBooks';
-import Inventory from '../Inventory/Inventory';
 import './Inventories.css';
 
 const Inventories = () => {
-    const [books] = useBooks([]);
+    const [books, setBooks] = useBooks([]);
+
+    // Delete Function
+    const handelBookDelete = id => {
+        const agree = window.confirm('Are you want to delete this item?');
+        if (agree) {
+            const url = `http://localhost:5000/book/${id}`;
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    const remainingBook = books.filter(book => book._id !== id);
+                    setBooks(remainingBook);
+                    toast("Item Deleted!");
+                })
+        }
+    }
     return (
         <div className='inventories-area'>
             <Container>
@@ -24,10 +41,14 @@ const Inventories = () => {
                         </thead>
                         <tbody>
                             {
-                                books.map(book => <Inventory
+                                books.map(book => <tr className='single-inventory'
                                     key={book._id}
-                                    book={book}
-                                ></Inventory>)
+                                >
+                                    <td>{book._id}</td>
+                                    <td>{book.name}</td>
+                                    <td>{book.quantity}</td>
+                                    <td><Button onClick={() => handelBookDelete(book._id)} className='btn theme-btn-two'>Delete</Button></td>
+                                </tr>)
                             }
                         </tbody>
                     </Table>
