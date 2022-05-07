@@ -1,0 +1,9 @@
+.my-items-area {
+    padding: 55px 0;
+    min-height: 87vh;
+}
+
+.my-items-area button {
+    padding: 5px 10px;
+    font-size: 12px;
+}

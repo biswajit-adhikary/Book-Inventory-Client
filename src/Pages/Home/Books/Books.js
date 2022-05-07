@@ -14,7 +14,7 @@ const Books = () => {
                 </div>
                 <Row>
                     {
-                        books.map(book => <Book
+                        books.slice(0, 6).map(book => <Book
                             key={book._id}
                             book={book}
                         ></Book>)

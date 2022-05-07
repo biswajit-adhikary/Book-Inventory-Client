@@ -1,11 +1,14 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
+import auth from '../../Firebase/Firebase.init';
 import './AddNewItem.css';
 
 const AddNewItem = () => {
     const { register, handleSubmit } = useForm();
+    const [user] = useAuthState(auth);
     const onSubmit = data => {
         const url = `http://localhost:5000/book`;
         fetch(url, {
@@ -33,8 +36,9 @@ const AddNewItem = () => {
                                 <textarea className='form-control mt-2' placeholder='Short Description' {...register("description")} required />
                                 <input className='form-control mt-2' placeholder='Price' type="number" {...register("price")} required />
                                 <input className='form-control mt-2' placeholder='Quantity' type="number" {...register("quantity")} required />
-                                <input className='form-control mt-2' placeholder='Supplier' type="text" {...register("supplier")} required />
                                 <input className='form-control mt-2' placeholder='Photo URL' type="text" {...register("image")} required />
+                                <input className='form-control mt-2' placeholder='Supplier' type="text" value={user.displayName} {...register("supplier")} readOnly />
+                                <input className='form-control mt-2' placeholder='Email' type="email" value={user.email} {...register("email")} readOnly />
                                 <input type="submit" className='btn theme-btn mt-3' value="Add Book" />
                             </form>
                         </div>
