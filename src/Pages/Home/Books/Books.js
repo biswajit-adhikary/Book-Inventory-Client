@@ -1,4 +1,4 @@
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useBooks from '../../../hooks/useBooks';
 import Book from '../Book/Book';
@@ -14,10 +14,18 @@ const Books = () => {
                 </div>
                 <Row>
                     {
-                        books.slice(0, 6).map(book => <Book
-                            key={book._id}
-                            book={book}
-                        ></Book>)
+                        books.length > 0
+                            ? (
+                                books.slice(0, 6).map(book => <Book
+                                    key={book._id}
+                                    book={book}
+                                ></Book>))
+                            : (
+                                <div className="text-center">
+                                    <Spinner animation="border" role="status">
+                                        <span className="visually-hidden">Loading...</span>
+                                    </Spinner>
+                                </div>)
                     }
                 </Row>
                 <div className="section-footer text-center">
