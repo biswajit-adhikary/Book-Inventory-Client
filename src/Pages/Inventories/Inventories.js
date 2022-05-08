@@ -11,7 +11,7 @@ const Inventories = () => {
     const handelBookDelete = id => {
         const agree = window.confirm('Are you want to delete this item?');
         if (agree) {
-            const url = `http://localhost:5000/book/${id}`;
+            const url = `https://pacific-fjord-89697.herokuapp.com/book/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

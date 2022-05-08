@@ -10,7 +10,7 @@ const BookDetails = () => {
 
     const [book, setBook] = useState({});
     useEffect(() => {
-        const url = `http://localhost:5000/book/${bookId}`;
+        const url = `https://pacific-fjord-89697.herokuapp.com/book/${bookId}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setBook(data));
@@ -23,7 +23,7 @@ const BookDetails = () => {
         const newNumber = oldNumber + number;
         const updatedQuantity = { newNumber };
 
-        const url = `http://localhost:5000/book/${bookId}`;
+        const url = `https://pacific-fjord-89697.herokuapp.com/book/${bookId}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -43,7 +43,7 @@ const BookDetails = () => {
         const newNumber = oldNumber - 1;
         const updatedQuantity = { newNumber };
 
-        const url = `http://localhost:5000/book/${bookId}`;
+        const url = `https://pacific-fjord-89697.herokuapp.com/book/${bookId}`;
         fetch(url, {
             method: 'PUT',
             headers: {

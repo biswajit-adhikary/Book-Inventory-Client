@@ -10,7 +10,7 @@ const AddNewItem = () => {
     const { register, handleSubmit } = useForm();
     const [user] = useAuthState(auth);
     const onSubmit = data => {
-        const url = `http://localhost:5000/book`;
+        const url = `https://pacific-fjord-89697.herokuapp.com/book`;
         fetch(url, {
             method: 'POST',
             headers: {
