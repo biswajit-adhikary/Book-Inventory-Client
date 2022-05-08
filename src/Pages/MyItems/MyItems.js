@@ -1,29 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Container, Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import './MyItems.css'
 import auth from '../../Firebase/Firebase.init';
-import axios from 'axios';
 import { toast } from 'react-toastify';
+import { signOut } from 'firebase/auth';
+import axiosApi from '../../api/axiosApi';
 
 const MyItems = () => {
     const [myitem, setMyitem] = useState([]);
     const [user] = useAuthState(auth);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getItem = async () => {
-            const email = user.email;
+            const email = user?.email;
             const url = `https://pacific-fjord-89697.herokuapp.com/my-items?email=${email}`;
             try {
-                const { data } = await axios.get(url, {
-                    headers: {
-                        authorization: `Bearrer ${localStorage.getItem('accessToken')}`
-                    }
-                });
+                const { data } = await axiosApi.get(url);
                 setMyitem(data);
             } catch (error) {
                 console.log(error.message);
+                if (error.response.status === 401 || error.response.status === 403) {
+                    signOut(auth);
+                    navigate('/login');
+                }
             }
         }
         getItem();
@@ -49,6 +51,7 @@ const MyItems = () => {
         <div className='my-items-area'>
             <Container>
                 <div className="section-heading">
+                    <h2 className='text-center'>Name: {user.displayName}</h2>
                     <h3 className='theme-text-secondary text-center mb-5'>My Items:</h3>
                 </div>
                 <div className="inventories">

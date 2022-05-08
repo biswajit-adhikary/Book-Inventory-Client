@@ -1,3 +1,30 @@
+## Website Name: Book Inventory
+### Live Website Link: [Book Inventory](https://book-inventory-dbbc9.web.app/)
+
+Features and Functionality:
+---------------------------
+* This is my book inventory management website.
+* People can upload their book here.
+* For using this website we need to create account.
+* User can create account using email & password or Google.
+* User will get one verification email.
+* User can reset password.
+* User can add their item.
+
+Technologies I use:
+-------------------
+* React
+* Firebase
+* React Router
+* React Firebase Hooks
+* React Bootstrap
+* React Toasts
+* NodeJS
+* Express
+* MongoDB
+* etc
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -3,12 +3,15 @@ import { Button } from 'react-bootstrap';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../Firebase/Firebase.init';
+import useToken from '../../../hooks/useToken';
 import google from '../../../images/google.png';
 import Loading from '../../Shared/Loading/Loading';
 
 const GoogleLogin = () => {
     // Main hook(Google Login)
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+
+    const [token] = useToken(googleUser);
 
     // Important Variable
     const navigate = useNavigate();
@@ -23,11 +26,11 @@ const GoogleLogin = () => {
 
     // Error Message
     if (googleError) {
-        errorMessage = <p className='text-danger'>Error: {googleError?.message}</p>
+        errorMessage = <p className='text-danger mt-3'>Error: {googleError?.message}</p>
     }
 
     // Successfully login
-    if (googleUser) {
+    if (token) {
         navigate(from, { replace: true });
     }
 

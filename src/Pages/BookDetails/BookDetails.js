@@ -73,6 +73,7 @@ const BookDetails = () => {
                         <img src={book.image} alt="" />
                         <h2>Book Name: {book.name}</h2>
                         <p><span>Supplier:</span> {book.supplier}</p>
+                        <p><span>Id:</span> {book._id}</p>
                         <p><span>Short description:</span> {book.description}</p>
                         <h4>Price: {book.price}</h4>
                         <h4>Quantity: {book.quantity}</h4>
@@ -85,7 +86,7 @@ const BookDetails = () => {
                 <Container>
                     <form onSubmit={handelAddedQuantity}>
                         <input className='form-control mb-2' type="number" name="number" placeholder='Restock the items' />
-                        <input className='form-control btn theme-btn' type="submit" value="Add New" />
+                        <input className='form-control btn theme-btn' type="submit" value="Restock" />
                     </form>
                 </Container>
             </div>

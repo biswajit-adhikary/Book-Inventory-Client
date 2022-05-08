@@ -3,6 +3,7 @@ import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../Firebase/Firebase.init';
+import useToken from '../../../hooks/useToken';
 import Loading from '../../Shared/Loading/Loading';
 import GoogleLogin from '../GoogleLogin/GoogleLogin';
 
@@ -14,6 +15,8 @@ const Register = () => {
         emailLoading,
         emailError,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
+    const [token] = useToken(emailUser);
 
     // Profile update
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
@@ -33,8 +36,8 @@ const Register = () => {
     const navigate = useNavigate();
 
     // After Registration
-    if (emailUser) {
-        navigate('/login');
+    if (token) {
+        navigate('/home');
     }
 
     // Loading & Updating
@@ -44,7 +47,7 @@ const Register = () => {
 
     // Error Message
     if (emailError || updateError) {
-        errorMessage = <p className='text-danger'>Error: {emailError?.message}</p>;
+        errorMessage = <p className='text-danger mt-3'>Error: {emailError?.message}</p>;
     }
 
     return (

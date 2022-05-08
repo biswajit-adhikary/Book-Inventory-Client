@@ -1,9 +1,9 @@
-import axios from 'axios';
 import React from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../Firebase/Firebase.init';
+import useToken from '../../../hooks/useToken';
 import Loading from '../../Shared/Loading/Loading';
 import GoogleLogin from '../GoogleLogin/GoogleLogin';
 import './Login.css';
@@ -16,6 +16,7 @@ const Login = () => {
         emailLoading,
         emailError,
     ] = useSignInWithEmailAndPassword(auth);
+    const [token] = useToken(emailUser);
 
     // Login function
     const handleEmailLogin = async event => {
@@ -23,9 +24,6 @@ const Login = () => {
         const email = event.target.email.value;
         const password = event.target.password.value;
         await signInWithEmailAndPassword(email, password);
-        const { data } = await axios.post('https://pacific-fjord-89697.herokuapp.com/login', { email });
-        localStorage.setItem('accessToken', data.accessToken);
-        navigate(from, { replace: true });
     }
 
     // Important Variable
@@ -35,7 +33,7 @@ const Login = () => {
     let from = location.state?.from?.pathname || "/";
 
     // Successfully login
-    if (emailUser) {
+    if (token) {
         navigate(from, { replace: true });
     }
 
@@ -46,7 +44,7 @@ const Login = () => {
 
     // Error Message
     if (emailError) {
-        errorMessage = <p className='text-danger'>Error: {emailError?.message}</p>
+        errorMessage = <p className='text-danger mt-3'>Error: {emailError?.message}</p>
     }
 
     return (
