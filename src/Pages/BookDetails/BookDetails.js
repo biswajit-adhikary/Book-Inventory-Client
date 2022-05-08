@@ -85,8 +85,8 @@ const BookDetails = () => {
             <div className="add-book-form">
                 <Container>
                     <form onSubmit={handelAddedQuantity}>
-                        <input className='form-control mb-2' type="number" name="number" placeholder='Restock the items' />
-                        <input className='form-control btn theme-btn' type="submit" value="Restock" />
+                        <input className='form-control mb-2' type="number" name="number" placeholder='Restock Quantity' />
+                        <input className='form-control btn theme-btn' type="submit" value="Update Quantity" />
                     </form>
                 </Container>
             </div>
