@@ -9,7 +9,7 @@ import './AddNewItem.css';
 const AddNewItem = () => {
     const { register, handleSubmit } = useForm();
     const [user] = useAuthState(auth);
-    const onSubmit = data => {
+    const onSubmit = (data, event) => {
         const url = `https://pacific-fjord-89697.herokuapp.com/book`;
         fetch(url, {
             method: 'POST',
@@ -21,6 +21,7 @@ const AddNewItem = () => {
             .then(res => res.json())
             .then(result => {
                 toast("Book Added!");
+                event.target.reset();
             })
     };
     return (
@@ -37,8 +38,8 @@ const AddNewItem = () => {
                                 <input className='form-control mt-2' placeholder='Price' type="number" {...register("price")} required />
                                 <input className='form-control mt-2' placeholder='Quantity' type="number" {...register("quantity")} required />
                                 <input className='form-control mt-2' placeholder='Photo URL' type="text" {...register("image")} required />
-                                <input className='form-control mt-2' placeholder='Supplier' type="text" value={user.displayName} {...register("supplier")} readOnly />
-                                <input className='form-control mt-2' placeholder='Email' type="email" value={user.email} {...register("email")} readOnly />
+                                <input className='form-control mt-2' placeholder='Supplier Name' type="text" {...register("supplier")} required />
+                                <input className='form-control mt-2' placeholder='Email' type="hidden" value={user.email} {...register("email")} readOnly />
                                 <input type="submit" className='btn theme-btn mt-3' value="Add Book" />
                             </form>
                         </div>
