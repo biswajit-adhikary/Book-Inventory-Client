@@ -1,0 +1,18 @@
+.blog-area {
+    padding-top: 55px;
+    padding-bottom: 25px;
+}
+
+.single-blog {
+    border: 1px solid #ededed;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 14px rgb(38 60 85 / 16%);
+}
+
+.single-blog img {
+    width: 100%;
+}
+
+.blog-text h3 {
+    font-size: 18px;
+}
